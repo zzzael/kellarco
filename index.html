@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KELLAR 2024</title>
+  <style>
+    body {
+      background-color: #000;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column; /* Added to stack items vertically */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-container img {
+      max-width: 60%; /* scaled down by 40% */
+      max-height: 60%; /* scaled down by 40% */
+    }
+
+    .text-container {
+      font-family: 'hel', sans-serif; /* updated font family */
+      font-size: 24px;
+      color: #fff;
+      margin-top: 20px; /* Add some space between the image and text */
+      opacity: 0; /* Hide text initially */
+      transition: opacity 1s ease; /* Smooth transition for fade-in */
+    }
+
+    @font-face {
+      font-family: 'hel';
+      src: url('/assets/hel.otf') format('opentype');
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="/assets/kellar.png" alt="Image">
+    <div class="text-container">
+      <span>[ NEW DROP PENDING ]</span>
+    </div>
+  </div>
+  <script>
+    setTimeout(function() {
+      document.querySelector('.text-container').style.opacity = 1; /* Fade in the text */
+    }, 3000); /* Text fades in after 3 seconds */
+  </script>
+</body>
+</html>
