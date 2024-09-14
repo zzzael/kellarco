@@ -10,12 +10,51 @@
       padding: 0;
     }
 
+    /* Nav bar for logo and text buttons */
+    .nav-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .nav-bar img {
+      max-height: 40px; /* Adjust the size of the logo */
+      margin-right: 20px; /* Space between logo and button */
+    }
+
+    .text-button {
+      font-family: 'hel', sans-serif;
+      font-size: 16px; /* Font size */
+      color: #fff;
+      text-decoration: none;
+      margin-left: 10px; /* Space between logo and button */
+      padding: 10px 20px; /* Padding for clickable area */
+      background-color: transparent; /* Transparent background */
+      border: none; /* Remove border */
+      cursor: pointer; /* Pointer cursor on hover */
+      display: inline-block; /* Ensure it behaves like a block */
+      transition: color 0.3s ease; /* Smooth transition */
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Hover effect: only change text color */
+    .text-button:hover {
+      color: #ccc; /* Text color on hover */
+      /* Remove background color change */
+    }
+
     .image-container {
       position: relative;
       width: 100%;
       height: 100vh;
       display: flex;
-      flex-direction: column; /* Added to stack items vertically */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -27,7 +66,7 @@
 
     .text-container {
       font-family: 'hel', sans-serif; /* updated font family */
-      font-size: 24px;
+      font-size: 16px; /* Reverting text size */
       color: #fff;
       margin-top: 20px; /* Add some space between the image and text */
       opacity: 0; /* Hide text initially */
@@ -41,12 +80,21 @@
   </style>
 </head>
 <body>
+  <!-- Navigation bar with logo and button -->
+  <div class="nav-bar">
+    <img src="/assets/logo.png" alt="Logo">
+    <a href="/concepts/index.html" class="text-button">[ CONCEPTS ]</a>
+  </div>
+
+  <!-- Image container and text -->
   <div class="image-container">
     <img src="/assets/kellar.png" alt="Image">
     <div class="text-container">
       <span>[ NEW DROP PENDING ]</span>
     </div>
   </div>
+
+  <!-- JavaScript for fade-in effect -->
   <script>
     setTimeout(function() {
       document.querySelector('.text-container').style.opacity = 1; /* Fade in the text */
