@@ -9,19 +9,26 @@
       font-family: 'hel', sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      height: 200vh; /* Set this to make scrolling possible */
       text-align: center;
       overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 200vh; /* To allow scrolling */
     }
 
     .product {
       opacity: 0;
       transition: opacity 1s ease-in-out;
-      margin-bottom: 50px;
+      margin-bottom: 150px; /* Add more space between products */
+    }
+
+    .product:first-child {
+      opacity: 1; /* Tee should be visible on page load */
     }
 
     .image-container {
@@ -72,34 +79,36 @@
   </style>
 </head>
 <body>
-  <!-- Tee Product -->
-  <div class="product" id="tee-section">
-    <div class="image-container">
-      <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="tee-image1" style="opacity: 1;">
-      <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="tee-image2" style="opacity: 0;">
+  <div class="container">
+    <!-- Tee Product -->
+    <div class="product" id="tee-section">
+      <div class="image-container">
+        <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="tee-image1" style="opacity: 1;">
+        <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="tee-image2" style="opacity: 0;">
+      </div>
+      <div class="text-container">
+        KELLAR "PRISCILLA" GRAPHIC
+      </div>
+      <div class="sub-text">
+        SHIPS IN 2-3 DAYS
+      </div>
+      <a href="#" class="purchase-button">[ PURCHASE ]</a>
     </div>
-    <div class="text-container">
-      KELLAR "PRISCILLA" GRAPHIC
-    </div>
-    <div class="sub-text">
-      SHIPS IN 2-3 DAYS
-    </div>
-    <a href="#" class="purchase-button">[ PURCHASE ]</a>
-  </div>
 
-  <!-- Hoodie Product -->
-  <div class="product" id="hoodie-section">
-    <div class="image-container">
-      <img src="/kellarco/assets/shirts/hoodie/hoodie1.png" alt="Hoodie 1" id="hoodie-image1" style="opacity: 1;">
-      <img src="/kellarco/assets/shirts/hoodie/hoodie2.png" alt="Hoodie 2" id="hoodie-image2" style="opacity: 0;">
+    <!-- Hoodie Product -->
+    <div class="product" id="hoodie-section">
+      <div class="image-container">
+        <img src="/kellarco/assets/shirts/hoodies/hoodie1.png" alt="Hoodie 1" id="hoodie-image1" style="opacity: 1;">
+        <img src="/kellarco/assets/shirts/hoodies/hoodie2.png" alt="Hoodie 2" id="hoodie-image2" style="opacity: 0;">
+      </div>
+      <div class="text-container">
+        KELLAR 2024 HOODIE
+      </div>
+      <div class="sub-text">
+        SHIPS 3-8 DAYS
+      </div>
+      <a href="#" class="purchase-button">[ PURCHASE ]</a>
     </div>
-    <div class="text-container">
-      KELLAR 2024 HOODIE
-    </div>
-    <div class="sub-text">
-      SHIPS 3-8 DAYS
-    </div>
-    <a href="#" class="purchase-button">[ PURCHASE ]</a>
   </div>
 
   <script>
@@ -132,7 +141,7 @@
       const teeSection = document.getElementById('tee-section');
       const teeOffset = teeSection.offsetTop;
 
-      if (scrollPosition > teeOffset - windowHeight && scrollPosition < teeOffset + teeSection.offsetHeight) {
+      if (scrollPosition < teeOffset + teeSection.offsetHeight) {
         teeSection.style.opacity = 1;
       } else {
         teeSection.style.opacity = 0;
@@ -142,7 +151,7 @@
       const hoodieSection = document.getElementById('hoodie-section');
       const hoodieOffset = hoodieSection.offsetTop;
 
-      if (scrollPosition > hoodieOffset - windowHeight && scrollPosition < hoodieOffset + hoodieSection.offsetHeight) {
+      if (scrollPosition > hoodieOffset - windowHeight) {
         hoodieSection.style.opacity = 1;
       } else {
         hoodieSection.style.opacity = 0;
