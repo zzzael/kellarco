@@ -10,16 +10,18 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
+      height: 200vh; /* Set this to make scrolling possible */
       text-align: center;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
-    .gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .product {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      margin-bottom: 50px;
     }
 
     .image-container {
@@ -70,10 +72,11 @@
   </style>
 </head>
 <body>
-  <div class="gallery">
+  <!-- Tee Product -->
+  <div class="product" id="tee-section">
     <div class="image-container">
-      <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="gallery-image1" style="opacity: 1;">
-      <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="gallery-image2" style="opacity: 0;">
+      <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="tee-image1" style="opacity: 1;">
+      <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="tee-image2" style="opacity: 0;">
     </div>
     <div class="text-container">
       KELLAR "PRISCILLA" GRAPHIC
@@ -84,15 +87,67 @@
     <a href="#" class="purchase-button">[ PURCHASE ]</a>
   </div>
 
+  <!-- Hoodie Product -->
+  <div class="product" id="hoodie-section">
+    <div class="image-container">
+      <img src="/kellarco/assets/hoodie/hoodie1.png" alt="Hoodie 1" id="hoodie-image1" style="opacity: 1;">
+      <img src="/kellarco/assets/hoodie/hoodie2.png" alt="Hoodie 2" id="hoodie-image2" style="opacity: 0;">
+    </div>
+    <div class="text-container">
+      KELLAR 2024 HOODIE
+    </div>
+    <div class="sub-text">
+      SHIPS 3-8 DAYS
+    </div>
+    <a href="#" class="purchase-button">[ PURCHASE ]</a>
+  </div>
+
   <script>
-    const images = document.querySelectorAll('.image-container img');
-    let currentIndex = 0;
-    
+    // Image rotation for both tee and hoodie
+    const teeImages = document.querySelectorAll('#tee-section .image-container img');
+    const hoodieImages = document.querySelectorAll('#hoodie-section .image-container img');
+    let teeIndex = 0;
+    let hoodieIndex = 0;
+
+    // Rotate tee images
     setInterval(() => {
-      images[currentIndex].style.opacity = 0;
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].style.opacity = 1;
-    }, 2000); // Rotate images every 2 seconds
+      teeImages[teeIndex].style.opacity = 0;
+      teeIndex = (teeIndex + 1) % teeImages.length;
+      teeImages[teeIndex].style.opacity = 1;
+    }, 2000); // Rotate every 2 seconds
+
+    // Rotate hoodie images
+    setInterval(() => {
+      hoodieImages[hoodieIndex].style.opacity = 0;
+      hoodieIndex = (hoodieIndex + 1) % hoodieImages.length;
+      hoodieImages[hoodieIndex].style.opacity = 1;
+    }, 2000); // Rotate every 2 seconds
+
+    // Scroll fade-in and fade-out effect
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // Tee section fades in and out
+      const teeSection = document.getElementById('tee-section');
+      const teeOffset = teeSection.offsetTop;
+
+      if (scrollPosition > teeOffset - windowHeight && scrollPosition < teeOffset + teeSection.offsetHeight) {
+        teeSection.style.opacity = 1;
+      } else {
+        teeSection.style.opacity = 0;
+      }
+
+      // Hoodie section fades in and out
+      const hoodieSection = document.getElementById('hoodie-section');
+      const hoodieOffset = hoodieSection.offsetTop;
+
+      if (scrollPosition > hoodieOffset - windowHeight && scrollPosition < hoodieOffset + hoodieSection.offsetHeight) {
+        hoodieSection.style.opacity = 1;
+      } else {
+        hoodieSection.style.opacity = 0;
+      }
+    });
   </script>
 </body>
 </html>
