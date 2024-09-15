@@ -3,14 +3,21 @@
 <head>
   <title>KELLAR 2024</title>
   <style>
+    /* Import the hel.ttf font */
+    @font-face {
+      font-family: 'Hel';
+      src: url('./assets/hel.ttf') format('truetype');
+    }
+
     body {
       background-color: #000;
       text-align: center;
       margin: 0;
       padding: 0;
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font or fallback to Helvetica */
     }
 
-    /* Nav bar for logo and text buttons */
+    /* Nav bar for logo */
     .nav-bar {
       position: absolute;
       top: 0;
@@ -28,26 +35,6 @@
       margin-right: 20px; /* Space between logo and button */
     }
 
-    .text-button {
-      font-family: 'hel', sans-serif;
-      font-size: 16px; /* Font size */
-      color: #fff;
-      text-decoration: none;
-      margin-left: 10px; /* Space between logo and button */
-      padding: 10px 20px; /* Padding for clickable area */
-      background-color: transparent; /* Transparent background */
-      border: none; /* Remove border */
-      cursor: pointer; /* Pointer cursor on hover */
-      display: inline-block; /* Ensure it behaves like a block */
-      transition: color 0.3s ease; /* Smooth transition */
-      z-index: 1000; /* Ensure it's above other elements */
-    }
-
-    /* Hover effect: only change text color */
-    .text-button:hover {
-      color: #ccc; /* Text color on hover */
-    }
-
     .image-container {
       position: relative;
       width: 100%;
@@ -59,45 +46,97 @@
     }
 
     .image-container img {
-      max-width: 60%; /* scaled down by 40% */
-      max-height: 60%; /* scaled down by 40% */
+      max-width: 60%; /* Scaled down by 40% */
+      max-height: 60%; /* Scaled down by 40% */
     }
 
     .text-container {
-      font-family: 'hel', sans-serif; /* updated font family */
-      font-size: 16px; /* Reverting text size */
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font */
+      font-size: 16px; 
       color: #fff;
-      margin-top: 20px; /* Add some space between the image and text */
-      opacity: 0; /* Hide text initially */
-      transition: opacity 1s ease; /* Smooth transition for fade-in */
+      margin-top: 20px; /* Space between the image and text */
     }
 
-    @font-face {
-      font-family: 'hel';
-      src: url('./assets/hel.ttf') format('truetype'); /* Adjusted path */
+    .password-input {
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font */
+      font-size: 16px; /* Regular/Light size */
+      color: #fff;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #fff; /* Underline instead of full border */
+      padding: 10px;
+      text-align: center;
+      outline: none;
+      margin-top: 20px; /* Space between image and input box */
+      width: 200px;
+    }
+
+    .password-input::placeholder {
+      color: #aaa; /* Light color for placeholder */
+    }
+
+    .enter-button {
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px; /* Space between input and button */
+      display: none; /* Initially hidden */
+      text-align: center; /* Ensure the text is centered */
+    }
+
+    .enter-button:hover {
+      color: #ccc;
+    }
+
+    /* Center the button by default */
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation bar with logo and button -->
+  <!-- Navigation bar with logo -->
   <div class="nav-bar">
     <img src="logo.png" alt="Logo">
-    <a href="/kellarco/concepts/index.html" class="text-button">[ CONCEPTS ]</a>
   </div>
 
-  <!-- Image container and text -->
+  <!-- Image container and password input -->
   <div class="image-container">
     <img src="kellar.png" alt="Image">
     <div class="text-container">
-      <span>[ NEW DROP PENDING ]</span>
+      <input type="password" id="password" class="password-input" placeholder="DROP PASSWORD">
+      <button id="enterButton" class="enter-button">[ ENTER ]</button>
     </div>
   </div>
 
-  <!-- JavaScript for fade-in effect -->
+  <!-- JavaScript for password validation and showing the button -->
   <script>
-    setTimeout(function() {
-      document.querySelector('.text-container').style.opacity = 1; /* Fade in the text */
-    }, 3000); /* Text fades in after 3 seconds */
+    const passwordInput = document.getElementById('password');
+    const enterButton = document.getElementById('enterButton');
+
+    // Event listener to show the "ENTER" button after more than 3 characters are entered
+    passwordInput.addEventListener('input', function() {
+      if (passwordInput.value.length > 3) {
+        enterButton.style.display = 'block'; // Show the button
+      } else {
+        enterButton.style.display = 'none'; // Hide the button if fewer than 3 characters
+      }
+    });
+
+    // Event listener to check the password and redirect if correct
+    enterButton.addEventListener('click', function() {
+      if (passwordInput.value === 'KELLAR2024') {
+        window.location.href = '/kellarco/concepts/index.html'; // Redirect to concepts page
+      } else {
+        alert('DENIED'); // Alert if password is incorrect
+      }
+    });
   </script>
 </body>
 </html>
