@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>KELLAR CONCEPT LIBRARY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       background-color: #000;
@@ -18,13 +19,14 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 200vh; /* To allow scrolling */
+      height: auto; /* Adjust height for scrolling */
+      padding-top: 50px; /* Move content lower on the page */
     }
 
     .product {
       opacity: 0;
       transition: opacity 1s ease-in-out;
-      margin-bottom: 150px; /* Add more space between products */
+      margin-bottom: 300px; /* Increase space between products */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -36,8 +38,8 @@
 
     .image-container {
       position: relative;
-      width: 400px; /* Set desired width */
-      height: 400px; /* Set height to match aspect ratio */
+      width: 400px;
+      height: 400px;
       overflow: hidden;
       margin-bottom: 20px;
     }
@@ -78,6 +80,26 @@
 
     .purchase-button:hover {
       color: #888;
+    }
+
+    /* Mobile scaling */
+    @media (max-width: 768px) {
+      .image-container {
+        width: 90%; /* Adjust image size for mobile */
+        height: auto;
+      }
+
+      .text-container {
+        font-size: 18px;
+      }
+
+      .sub-text {
+        font-size: 14px;
+      }
+
+      .purchase-button {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
