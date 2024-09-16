@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>KELLAR CONCEPT LIBRARY</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure mobile responsiveness -->
   <style>
     body {
       background-color: #000;
@@ -19,39 +19,23 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: auto; /* Adjust height for scrolling */
-      padding-top: 50px; /* Move content lower on the page */
+      height: 200vh; /* To allow scrolling */
     }
 
     .product {
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      margin-bottom: 300px; /* Increase space between products */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product:first-child {
-      opacity: 1; /* Tee should be visible on page load */
+      opacity: 1; /* Ensure both products are visible */
+      margin-bottom: 150px; /* Space between products */
     }
 
     .image-container {
-      position: relative;
-      width: 400px;
-      height: 400px;
-      overflow: hidden;
-      margin-bottom: 20px;
+      width: 100%; 
+      max-width: 300px; /* Limit size for larger screens */
+      margin-bottom: 40px; /* Space between items */
     }
 
     .image-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 1s ease-in-out;
+      width: 100%; /* Full width */
+      height: auto; /* Maintain aspect ratio */
     }
 
     .text-container {
@@ -68,7 +52,7 @@
 
     .purchase-button {
       font-family: 'hel', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       color: #aaa;
       text-decoration: none;
       padding: 10px 20px;
@@ -82,23 +66,19 @@
       color: #888;
     }
 
-    /* Mobile scaling */
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
-      .image-container {
-        width: 90%; /* Adjust image size for mobile */
-        height: auto;
-      }
-
       .text-container {
-        font-size: 18px;
-      }
-
-      .sub-text {
-        font-size: 14px;
+        font-size: 18px; /* Scale text down for mobile */
       }
 
       .purchase-button {
-        font-size: 14px;
+        font-size: 16px; /* Scale button text down */
+      }
+      
+      .image-container {
+        max-width: 100%; /* Ensure images scale to full width */
+        margin-bottom: 60px;
       }
     }
   </style>
@@ -108,8 +88,8 @@
     <!-- Tee Product -->
     <div class="product" id="tee-section">
       <div class="image-container">
-        <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="tee-image1" style="opacity: 1;">
-        <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="tee-image2" style="opacity: 0;">
+        <img src="/kellarco/assets/shirts/prisc/shirt1.png" alt="Shirt 1" id="tee-image1">
+        <img src="/kellarco/assets/shirts/prisc/shirt2.png" alt="Shirt 2" id="tee-image2">
       </div>
       <div class="text-container">
         KELLAR "PRISCILLA" GRAPHIC
@@ -123,8 +103,8 @@
     <!-- Hoodie Product -->
     <div class="product" id="hoodie-section">
       <div class="image-container">
-        <img src="/kellarco/assets/shirts/hoodie/hoodie1.png" alt="Hoodie 1" id="hoodie-image1" style="opacity: 1;">
-        <img src="/kellarco/assets/shirts/hoodie/hoodie2.png" alt="Hoodie 2" id="hoodie-image2" style="opacity: 0;">
+        <img src="/kellarco/assets/shirts/hoodie/hoodie1.png" alt="Hoodie 1" id="hoodie-image1">
+        <img src="/kellarco/assets/shirts/hoodie/hoodie2.png" alt="Hoodie 2" id="hoodie-image2">
       </div>
       <div class="text-container">
         KELLAR 2024 HOODIE
@@ -135,53 +115,5 @@
       <a href="#" class="purchase-button">[ PURCHASE ]</a>
     </div>
   </div>
-
-  <script>
-    // Image rotation for both tee and hoodie
-    const teeImages = document.querySelectorAll('#tee-section .image-container img');
-    const hoodieImages = document.querySelectorAll('#hoodie-section .image-container img');
-    let teeIndex = 0;
-    let hoodieIndex = 0;
-
-    // Rotate tee images
-    setInterval(() => {
-      teeImages[teeIndex].style.opacity = 0;
-      teeIndex = (teeIndex + 1) % teeImages.length;
-      teeImages[teeIndex].style.opacity = 1;
-    }, 2000); // Rotate every 2 seconds
-
-    // Rotate hoodie images
-    setInterval(() => {
-      hoodieImages[hoodieIndex].style.opacity = 0;
-      hoodieIndex = (hoodieIndex + 1) % hoodieImages.length;
-      hoodieImages[hoodieIndex].style.opacity = 1;
-    }, 2000); // Rotate every 2 seconds
-
-    // Scroll fade-in and fade-out effect
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-
-      // Tee section fades in and out
-      const teeSection = document.getElementById('tee-section');
-      const teeOffset = teeSection.offsetTop;
-
-      if (scrollPosition < teeOffset + teeSection.offsetHeight) {
-        teeSection.style.opacity = 1;
-      } else {
-        teeSection.style.opacity = 0;
-      }
-
-      // Hoodie section fades in and out
-      const hoodieSection = document.getElementById('hoodie-section');
-      const hoodieOffset = hoodieSection.offsetTop;
-
-      if (scrollPosition > hoodieOffset - windowHeight) {
-        hoodieSection.style.opacity = 1;
-      } else {
-        hoodieSection.style.opacity = 0;
-      }
-    });
-  </script>
 </body>
 </html>
