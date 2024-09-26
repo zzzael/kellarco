@@ -4,17 +4,12 @@
   <title>KELLAR 2024</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure mobile responsiveness -->
   <style>
-    /* Import the hel.ttf font */
-    @font-face {
-      font-family: 'Hel';
-      src: url('./assets/hel.ttf') format('truetype');
-    }
-
     body {
       background-color: #000;
       text-align: center;
       margin: 0;
       padding: 0;
+<<<<<<< HEAD
       font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font or fallback */
     }
 
@@ -56,26 +51,96 @@
       .enter-button {
         font-size: 16px;
       }
+=======
+    }
+
+    /* Nav bar for logo and text buttons */
+    .nav-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .nav-bar img {
+      max-height: 40px; /* Adjust the size of the logo */
+      margin-right: 20px; /* Space between logo and button */
+    }
+
+    .text-button {
+      font-family: 'hel', sans-serif;
+      font-size: 16px; /* Font size */
+      color: #fff;
+      text-decoration: none;
+      margin-left: 10px; /* Space between logo and button */
+      padding: 10px 20px; /* Padding for clickable area */
+      background-color: transparent; /* Transparent background */
+      border: none; /* Remove border */
+      cursor: pointer; /* Pointer cursor on hover */
+      display: inline-block; /* Ensure it behaves like a block */
+      transition: color 0.3s ease; /* Smooth transition */
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Hover effect: only change text color */
+    .text-button:hover {
+      color: #ccc; /* Text color on hover */
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-container img {
+      max-width: 60%; /* scaled down by 40% */
+      max-height: 60%; /* scaled down by 40% */
+    }
+
+    .text-container {
+      font-family: 'hel', sans-serif; /* updated font family */
+      font-size: 16px; /* Reverting text size */
+      color: #fff;
+      margin-top: 20px; /* Add some space between the image and text */
+      opacity: 0; /* Hide text initially */
+      transition: opacity 1s ease; /* Smooth transition for fade-in */
+    }
+
+    @font-face {
+      font-family: 'hel';
+      src: url('./assets/hel.ttf') format('truetype'); /* Adjusted path */
+>>>>>>> parent of b5055a7 (Update index.html)
     }
   </style>
 </head>
 <body>
-  <!-- Navigation bar with logo -->
+  <!-- Navigation bar with logo and button -->
   <div class="nav-bar">
     <img src="logo.png" alt="Logo">
+    <a href="/kellarco/concepts/index.html" class="text-button">[ CONCEPTS ]</a>
   </div>
 
-  <!-- Image container and password input -->
+  <!-- Image container and text -->
   <div class="image-container">
     <img src="kellar.png" alt="Image">
     <div class="text-container">
-      <input type="password" id="password" class="password-input" placeholder="DROP PASSWORD">
-      <button id="enterButton" class="enter-button">[ ENTER ]</button>
+      <span>[ NEW DROP PENDING ]</span>
     </div>
   </div>
 
-  <!-- JavaScript for password validation and showing the button -->
+  <!-- JavaScript for fade-in effect -->
   <script>
+<<<<<<< HEAD
     const passwordInput = document.getElementById('password');
     const enterButton = document.getElementById('enterButton');
 
@@ -96,6 +161,11 @@
         alert('DENIED'); // Alert if password is incorrect
       }
     });
+=======
+    setTimeout(function() {
+      document.querySelector('.text-container').style.opacity = 1; /* Fade in the text */
+    }, 3000); /* Text fades in after 3 seconds */
+>>>>>>> parent of b5055a7 (Update index.html)
   </script>
 </body>
 </html>
