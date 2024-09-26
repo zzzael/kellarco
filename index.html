@@ -9,49 +9,7 @@
       text-align: center;
       margin: 0;
       padding: 0;
-<<<<<<< HEAD
-      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font or fallback */
-    }
-
-    /* Responsive for mobile scaling */
-    .image-container img {
-      width: 60%; /* Scale the image */
-      height: auto;
-      max-width: 600px; /* Limit the maximum size on larger screens */
-    }
-
-    .nav-bar img {
-      height: 35px; /* Scale logo down for mobile */
-      margin: 10px;
-    }
-
-    .password-input {
-      font-size: 20px; /* Larger text for easier mobile reading */
-      width: 60%; /* Width for mobile input */
-      max-width: 300px; /* Limit max width */
-      margin-top: 20px;
-    }
-
-    .enter-button {
-      font-size: 18px; /* Slightly larger for mobile */
-      margin-top: 20px;
-    }
-
-    .text-container {
-      margin-top: 30px; /* Space between items */
-    }
-
-    @media (max-width: 768px) {
-      .nav-bar img {
-        height: 30px; /* Further reduce logo size for small screens */
-      }
-      .password-input {
-        font-size: 16px; /* Adjust text size */
-      }
-      .enter-button {
-        font-size: 16px;
-      }
-=======
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif; /* Use custom Hel font or fallback to Helvetica */
     }
 
     /* Nav bar for logo and text buttons */
@@ -116,10 +74,28 @@
       transition: opacity 1s ease; /* Smooth transition for fade-in */
     }
 
-    @font-face {
-      font-family: 'hel';
-      src: url('./assets/hel.ttf') format('truetype'); /* Adjusted path */
->>>>>>> parent of b5055a7 (Update index.html)
+    .enter-button {
+      font-family: 'Hel', 'Helvetica', 'Arial', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px; /* Space between input and button */
+      display: none; /* Initially hidden */
+      text-align: center; /* Ensure the text is centered */
+    }
+
+    .enter-button:hover {
+      color: #ccc;
+    }
+
+    /* Center the button by default */
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
@@ -140,11 +116,10 @@
 
   <!-- JavaScript for fade-in effect -->
   <script>
-<<<<<<< HEAD
     const passwordInput = document.getElementById('password');
     const enterButton = document.getElementById('enterButton');
 
-    // Show the "ENTER" button after more than 3 characters are entered
+    // Event listener to show the "ENTER" button after more than 3 characters are entered
     passwordInput.addEventListener('input', function() {
       if (passwordInput.value.length > 3) {
         enterButton.style.display = 'block'; // Show the button
@@ -153,7 +128,7 @@
       }
     });
 
-    // Check the password and redirect if correct
+    // Event listener to check the password and redirect if correct
     enterButton.addEventListener('click', function() {
       if (passwordInput.value === 'KELLAR2024') {
         window.location.href = '/kellarco/concepts/index.html'; // Redirect to concepts page
@@ -161,11 +136,6 @@
         alert('DENIED'); // Alert if password is incorrect
       }
     });
-=======
-    setTimeout(function() {
-      document.querySelector('.text-container').style.opacity = 1; /* Fade in the text */
-    }, 3000); /* Text fades in after 3 seconds */
->>>>>>> parent of b5055a7 (Update index.html)
   </script>
 </body>
 </html>
